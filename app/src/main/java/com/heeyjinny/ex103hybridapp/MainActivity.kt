@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-
+        //ddddd
         //설정들 -필수속성
         binding.wv.settings.javaScriptEnabled=true //js사용 허용
         binding.wv.settings.allowFileAccess=true //클라이언트의 js에서 AJAX기술 동작을 허용
