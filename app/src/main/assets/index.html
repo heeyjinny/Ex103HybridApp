@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+        <!--   부트스트랩 css라이브러리 사용     -->
+        <link href="./bootstrap.min.css" rel="stylesheet">
+
+        <script>
+            //네이티브안드로이드에서 호출할 메소드 만들기
+            function setMessage( msg ){
+                document.getElementById('msg').innerHTML= msg
+            }
+
+            //네이티브 안드로이드에게 메시지 보내는 작업 메소드
+            //코틀린에 만들어놓은 중계객체를 사용하여 작업
+            function sendMessageToNative(){
+                //인풋요소에 써있는 글씨 얻어오기
+                var msg=document.getElementById('in1').value
+
+                //안드로이드의 중계인 객체를 이용하여 원하는 작업 요청
+                //코틀린에서 설정했던 중계객체의 별명(Droid)이 자동으로 BOM(웹브라우저)의 최상위 객체 window의 멤버가 됨
+                window.Droid.setTextView(msg)
+            }
+
+            //디바이스 고유기능 사용
+            function openGallery(){
+
+                window.Droid.openGalleryApp()
+            }
+        </script>
+
+    </head>
+    <body>
+
+        <h5>Native Android로부터 받은 메시지...</h5>
+        <h6 id="msg">WAIT...</h6>
+
+        <h5 class="mt-5">네이티브 코틀린쪽으로 메시지 보내기...</h5>
+        <input class="form-control mt-3" type="text" id="in1" placeholder="enter message">
+
+        <div class="d-grid gap-2">
+            <button onclick="sendMessageToNative()" class="btn btn-primary mt-3 btn-block">send message to Native Android</button>
+
+            <!--   디바이스 고유기능 사용    -->
+            <button onclick="openGallery()" class="btn btn-success btn-block">open gallery</button>
+        </div>
+
+    </body>
+</html>
